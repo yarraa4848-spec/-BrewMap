@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BrewMap | Abha & Khamis Mushait Coffee Guide</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-content">
+      <a href="#" class="logo"><i class="fa-solid fa-mug-hot"></i> Brew<span>Map</span></a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#explore">Explore</a></li>
+          <li><a href="#map-section">Map</a></li>
+          <li><a href="#suggest">Suggest a Café</a></li>
+        </ul>
+      </nav>
+      <button id="fav-toggle-btn" class="btn-outline">
+        <i class="fa-solid fa-heart"></i> Favorites (<span id="fav-count">0</span>)
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-content">
+      <h1>Specialty Coffee Guide in Abha & Khamis Mushait</h1>
+      <p>Discover quiet study spots, V60 pour-over bars, and outdoor cafés across the highlands.</p>
+
+      <!-- Search Bar -->
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="search-input" placeholder="Search by café name, Abha, Khamis Mushait, or V60...">
+      </div>
+
+      <!-- Filter Tags -->
+      <div class="filter-tags">
+        <button class="filter-btn active" data-filter="all">All Cafés</button>
+        <button class="filter-btn" data-filter="study">Study-Friendly</button>
+        <button class="filter-btn" data-filter="v60">V60 / Pour-Over</button>
+        <button class="filter-btn" data-filter="outdoor">Outdoor Seating</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Explore Cafés Grid -->
+  <section id="explore" class="section container">
+    <div class="section-header">
+      <h2>Featured Cafés in Abha & Khamis Mushait</h2>
+      <p id="results-count">Showing all cafés</p>
+    </div>
+    <div id="cafes-grid" class="cafes-grid">
+      <!-- Cards injected via JavaScript -->
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section id="map-section" class="section map-wrapper">
+    <div class="container">
+      <div class="section-header">
+        <h2>Explore Abha & Khamis Mushait on the Map</h2>
+        <p>Browse specialty coffee locations around Abha and Khamis Mushait.</p>
+      </div>
+      <div class="map-container">
+        <iframe
+          id="google-map"
+          src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d121226.44702418916!2d42.5050!3d18.2164!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sspecialty%20coffee%20abha%20khamis%20mushait!5e0!3m2!1sen!2ssa!4v1700000000000"
+          width="100%"
+          height="400"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Suggest a Café Form -->
+  <section id="suggest" class="section container">
+    <div class="form-card">
+      <h2>Know a Hidden Gem? Suggest a Café</h2>
+      <p>Add a specialty coffee shop in Abha or Khamis Mushait to BrewMap.</p>
+      <form id="suggest-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cafe-name">Café Name *</label>
+            <input type="text" id="cafe-name" required placeholder="e.g., Asir Roastery">
+          </div>
+          <div class="form-group">
+            <label for="cafe-area">Neighborhood & City *</label>
+            <input type="text" id="cafe-area" required placeholder="e.g., Al Manhal, Abha">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cafe-specialty">Specialty / Vibe *</label>
+            <select id="cafe-specialty">
+              <option value="study">Study-Friendly & Fast Wi-Fi</option>
+              <option value="v60">V60 & Single-Origin Beans</option>
+              <option value="outdoor">Outdoor Seating</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="cafe-hours">Opening Hours</label>
+            <input type="text" id="cafe-hours" placeholder="e.g., 7:00 AM - 12:00 AM">
+          </div>
+        </div>
+        <button type="submit" class="btn-primary">Add Café to BrewMap</button>
+        <p id="form-feedback" class="feedback-msg"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Favorites Modal -->
+  <div id="fav-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2><i class="fa-solid fa-heart" style="color:#C67C4E;"></i> Your Saved Cafés</h2>
+      <div id="fav-list" class="fav-list"></div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div>
+        <h3>BrewMap</h3>
+        <p>Specialty coffee guide for Abha & Khamis Mushait.</p>
+      </div>
+      <div class="social-links">
+        <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://x.com" target="_blank" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://tiktok.com" target="_blank" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+      </div>
+    </div>
+    <p class="copyright">&copy; 2026 BrewMap Web Design Project. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
